@@ -15,10 +15,9 @@ return new class extends Migration
     $table->id();
     $table->string('external_id')->unique();
     $table->foreignId('case_id')->nullable()->constrained();
-    $table->string('type'); // invoice, declaration, rtg_image
-    $table->string('file_name');
-    $table->string('mime_type');
-    $table->string('signed_url');
+    $table->string('type')->nullable(); // invoice, declaration, rtg_image
+    $table->string('file_path')->nullable();
+    $table->timestamp('uploaded_at')->nullable();
     $table->timestamps();
 });
 

@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('inspections', function (Blueprint $table) {
     $table->id();
-    $table->string('external_id')->unique();
+    $table->string('external_id')->nullable()->unique();
     $table->foreignId('case_id')->constrained();
-    $table->string('type'); // document, rtg, physical
-    $table->string('result'); // release, hold, reject
+    $table->string('type')->nullable(); // document, rtg, physical
+    $table->string('status')->nullable(); // release, hold, reject
     $table->text('comment')->nullable();
-    $table->foreignId('performed_by')->constrained('users');
+    $table->timestamp('performed_at')->nullable();
     $table->timestamps();
 });
 

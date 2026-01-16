@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('case_cargo_items', function (Blueprint $table) {
     $table->id();
+    $table->string('external_id')->unique();
     $table->foreignId('case_id')->constrained();
-    $table->string('hs_code', 10);
-    $table->decimal('weight', 10, 2);
-    $table->decimal('value', 12, 2);
-    $table->string('currency', 3);
-    $table->string('origin_country', 2);
+    $table->string('hs_code', 10)->nullable();
+    $table->text('description')->nullable();
+    $table->decimal('weight', 10, 2)->nullable();
+    $table->decimal('value', 12, 2)->nullable();
+    $table->string('currency', 3)->nullable();
+    $table->string('origin_country', 2)->nullable();
     $table->timestamps();
 });
 
